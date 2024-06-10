@@ -47,5 +47,7 @@ app.post("/occurrence/search", async (request, response) => {
   }
 });
 
-console.log("Server is running on port 3000");
-await app.listen({ port: 3000 });
+const port = process.env.PORT || 3000;
+
+console.log(`Server is running on port ${port}`);
+await app.listen({ port });
