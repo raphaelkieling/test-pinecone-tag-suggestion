@@ -7,6 +7,7 @@ import {
 } from "./occurrence.service";
 import { z } from "zod";
 import authenticate from "./auth.middleware";
+import path from "path";
 
 // Create the index if it doesn't exist
 await startIndex();
@@ -15,6 +16,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(authenticate);
+
+app.get("/", (_request, response) => {
+  const paths = path.join(__dirname, "assets", "index.html");
+  response.sendFile(paths);
+});
 
 app.post("/occurrence", async (request, response) => {
   try {
