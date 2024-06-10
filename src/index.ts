@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import {
   saveOccurrence,
   searchByIssue,
@@ -12,11 +13,11 @@ await startIndex();
 
 const app = express();
 app.use(express.json());
-app.use(authenticate)
+app.use(cors());
+app.use(authenticate);
 
 app.post("/occurrence", async (request, response) => {
   try {
-    console.log(request.body)
     const Occurrence = z.object({
       issue: z.string(),
       tag: z.string(),
