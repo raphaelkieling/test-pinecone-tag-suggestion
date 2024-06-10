@@ -1,0 +1,16 @@
+POST http://localhost:3000/occurrence HTTP/1.1
+content-type: application/json
+
+{
+    "issue": "test",
+    "tag": "any-tag"
+}
+
+###
+
+POST http://localhost:3000/occurrence/search HTTP/1.1
+content-type: application/json
+
+{
+    "issue": "test"
+}
